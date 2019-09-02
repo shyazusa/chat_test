@@ -51,3 +51,15 @@ $ docker run \
   chat_ui:latest \
   npm start
 ```
+
+## 作成してく
+
+```
+docker run \
+  --rm \
+  -v ${PWD}:/app \
+  -v /app/node_modules \
+  -p 3030:3000 \
+  chat_ui:latest \
+  npm install --save styled-components
+```
