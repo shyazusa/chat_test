@@ -55,11 +55,29 @@ $ docker run \
 ## 作成してく
 
 ```
-docker run \
+$ docker run \
   --rm \
   -v ${PWD}:/app \
   -v /app/node_modules \
   -p 3030:3000 \
   chat_ui:latest \
   npm install --save styled-components
+```
+
+```
+$ docker build -t chat_ui:latest .
+```
+
+```
+$ docker run \
+  --rm \
+  -v ${PWD}:/app \
+  -v /app/node_modules \
+  -p 3030:3000 \
+  chat_ui:latest \
+  npm install @types/styled-components
+```
+
+```
+$ docker build -t chat_ui:latest .
 ```
