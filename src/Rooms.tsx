@@ -36,6 +36,7 @@ const Rooms: React.FC = () => {
       {
         rooms.map(room => (
           <Room
+            key={room.id}
             name={room.name}
             unreadCount={room.unreadCount}
           />
