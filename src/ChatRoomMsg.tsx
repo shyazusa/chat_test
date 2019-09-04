@@ -25,6 +25,7 @@ const ChatRoomMsg: React.FC<Props> = (props: Props) => {
       {
         msgs.map(msg => (
           <Msg
+            key={msg.id}
             content={msg.content}
             mine={currentUserId === msg.userId}
           />
