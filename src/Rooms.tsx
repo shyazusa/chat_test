@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   flex: 1;
   background-color: #f2d3d3;
 `;
-
 const rooms = [
   {
     id: 1,

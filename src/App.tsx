@@ -8,6 +8,7 @@ const Main = styled.div`
   height: calc(100vh - 50px);
   display: flex;
 `;
+
 const App: React.FC = () => {
   return (
     <div>
