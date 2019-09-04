@@ -15,17 +15,17 @@ const rooms = [
   {
     id: 2,
     name: "テクニカル",
-    unreadCount: 10,
+    unreadCount: 100,
   },
   {
     id: 3,
     name: "アイドルマスター",
-    unreadCount: 100,
+    unreadCount: 1000,
   },
   {
     id: 4,
     name: "寿限無寿限無五劫の擦り切れ海砂利水魚の水行末雲来末風来末食う寝る処に住む処やぶら小路の藪柑子パイポパイポパイポのシューリンガンシューリンガンのグーリンダイグーリンダイのポンポコピーのポンポコナーの長久命の長助",
-    unreadCount: 1000,
+    unreadCount: 10,
   },
 ]
 
