@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :room do
+  factory :msg do
     content { "おはよう" }
     user { build(:user) }
-    romm { build(:room) }
+    room { build(:room) }
   end
 end

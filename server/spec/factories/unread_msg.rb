@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :room do
+  factory :unread_msg do
     user { build(:user) }
-    romm { build(:room) }
+    room { build(:room) }
     msg { build(:msg, user: user, room: room) }
   end
 end
