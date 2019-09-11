@@ -31,7 +31,7 @@ class User < ApplicationRecord
   def self.validate_password(password)
     errs = []
     if password.blank?
-      errs << "パスワードは必須です"
+      errs << 'パスワードは必須です'
       return errs
     end
 
@@ -40,7 +40,7 @@ class User < ApplicationRecord
     has_sym = !password.index(/[_-]/).nil?
 
     if !PASSWORD_FORMAT.match?(password) || !has_char || !has_number || !has_sym
-      errs << "パスワードは9文字以上で，英字，数字，記号(-_)をそれぞれ1つ以上含む必要があります"
+      errs << 'パスワードは9文字以上で，英字，数字，記号(-_)をそれぞれ1つ以上含む必要があります'
     end
     return errs
   end

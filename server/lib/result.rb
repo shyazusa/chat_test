@@ -3,7 +3,7 @@ class Result
 
   # errs: エラー内容を示す文字列の配列
   # data: オブジェクト
-  def initialize(errs, data)
+  def initialize(errs = [], data = nil)
     @errs = errs
     @data = data
   end
