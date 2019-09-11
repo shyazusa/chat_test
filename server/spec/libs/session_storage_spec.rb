@@ -20,9 +20,9 @@ RSpec.describe SessionStorage do
     it 'can delete the data' do
       SessionStorage.set('some-key', 'some-value')
       before_session = SessionStorage.get('some-key')
-      SessionStorage.remove('some-key')
+      remove_action = SessionStorage.remove('some-key')
       after_session = SessionStorage.get('some-key')
-      expect(after_session.success?).to eq true
+      expect(remove_action.success?).to eq true
       expect(before_session.data).not_to eq after_session.data
       expect(after_session.data).to eq nil
     end
