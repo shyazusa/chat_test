@@ -16,7 +16,9 @@ RSpec.describe SessionStorage do
       session = r.data
       expect(session).to eq 'some-value'
     end
+  end
 
+  describe 'remove' do
     it 'can delete the data' do
       SessionStorage.set('some-key', 'some-value')
       before_session = SessionStorage.get('some-key')
