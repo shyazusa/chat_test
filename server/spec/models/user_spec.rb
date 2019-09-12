@@ -64,4 +64,29 @@ RSpec.describe User, type: :model do
       expect(r.success?).to eq false
     end
   end
+
+  describe 'self.login' do
+    before do
+      User.register(
+        '四条 貴音',
+        'takane@example.com',
+        'takane-123'
+      )
+    end
+
+    it 'returns false when not found' do
+      r = User.login 'shijou@example.com', 'takane-123'
+      expect(r.success?).to eq false
+    end
+    it 'returns user with session_id when not found' do
+      r = User.login 'takane@example.com', 'takane-123'
+      expect(r.success?).to eq true
+      user = r.data
+      expect(user.email).to eq 'takane@example.com'
+    end
+  end
+
+  # TODO: https://github.com/Kohei909Otsuka/temona_tech_ed_doc/blob/master/chat/server/spec/models/user_spec.rb
+  # describe 'self.logout' do
+  # end
 end

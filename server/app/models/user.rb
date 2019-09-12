@@ -13,22 +13,46 @@ class User < ApplicationRecord
     format: EMAIL_FORMAT,
     uniqueness: true
 
-  def self.register(name, email, password)
+  def self.register name, email, password
     errs = User.validate_password(password)
     if errs.length > 0
       return Result.new(errs, nil)
     end
-    hashed_password = Digest::SHA256.hexdigest(password)
-    user = User.new(name: name, email: email, password: hashed_password)
+    user = User.new(name: name, email: email, password: hash(password))
     if user.save
       return Result.new([], user)
-    else
-      return Result.new(user.errors.full_messages, user)
     end
+    Result.new user.errors.full_messages, user
+  end
+
+  def self.login email, password
+    user = User.find_by(email: email, password: hash(password))
+    if user.nil?
+      return Result.new(['メールかパスワードが間違っています'])
+    end
+    session_id = SecureRandom.uuid
+    r = SessionStorage.set session_id, user.id
+    unless r.success?
+      return Result.new(['セッション情報の保存に失敗しました'])
+    end
+    Result.new [], user
+  end
+
+  def self.logout
+    r = SessionStorage.remove self.session_id
+    unless r.success
+      return Result.new(['セッション情報の削除に失敗しました'])
+    end
+    Result.new [], user
   end
 
   private
-  def self.validate_password(password)
+
+  def self.hash password
+    Digest::SHA256.hexdigest password
+  end
+
+  def self.validate_password password
     errs = []
     if password.blank?
       errs << 'パスワードは必須です'
